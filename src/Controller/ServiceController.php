@@ -9,12 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 use Symfony\Component\HttpFoundation\Response;
+/**
+ * @Route("/service")
+ */
 class ServiceController extends AbstractController
 {
     /**
-     * @Route("/service", name="service")
+     * @Route("/", name="service")
      */
     public function index(): Response
     {
@@ -23,14 +25,13 @@ class ServiceController extends AbstractController
         ]);
     }
     /**
-     * @Route("/service/affiche", name="afficherservice")
+     * @Route("/affiche", name="afficherservice")
      */
-    public function affiche(){
-        $repo=$this->getDoctrine()->getRepository(ServiceRepository::class)->findAll();
-        return $this->render('service/affiche.html.twig',['services'=>$repo]);
+    public function affiche(ServiceRepository $repo){
+        return $this->render('service/affiche.html.twig',['services'=>$repo->findAll()]);
     }
     /**
-     * @Route("/service/delete/{id}",name="deleteservice")
+     * @Route("/delete/{id}",name="deleteservice")
      */
     public function delete( $id ,ServiceRepository $repo){
         $em=$this->getDoctrine()->getManager();
@@ -40,14 +41,13 @@ class ServiceController extends AbstractController
         return $this->redirectToRoute('afficherservice');
     }
     /**
-     * @Route("/service/ajouter",name="Ajouterservice")
+     * @Route("/ajouter",name="Ajouterservice")
      */
     function Ajout(Request $request){
         $service=new Service();
         $form=$this->createForm(ServiceType::class,$service);
-
+        $form->add("ajouter",SubmitType::class);
         $form->handleRequest($request);
-
         if($form->isSubmitted()&&$form->isValid()){
             $em=$this->getDoctrine()->getManager();
             $em->persist($service);//insert into
@@ -58,7 +58,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/service/update/{id}",name="updateservice")
+     * @Route("/update/{id}",name="updateservice")
      */
     function update($id,ServiceRepository $repo,Request $request){
         $service=$repo->find($id) ;

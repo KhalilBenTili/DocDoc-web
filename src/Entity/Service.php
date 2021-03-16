@@ -6,6 +6,7 @@ use App\Repository\ServiceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ServiceRepository::class)
@@ -20,7 +21,14 @@ class Service
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=60)
+     * @ORM\Column(type="string", length=60)*
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 30,
+     *      minMessage = "libelle must be at least {{ limit }} characters long",
+     *      maxMessage = "libelle cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     * )
      */
     private $libelle;
 
@@ -72,7 +80,7 @@ class Service
     /**
      * @return Collection|FourniseurService[]
      */
-    public function getFourniseursservice(): Collection
+    public function getFournisseurs(): Collection
     {
         return $this->fourniseursservice;
     }

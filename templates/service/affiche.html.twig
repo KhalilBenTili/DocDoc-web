@@ -5,19 +5,20 @@
     <section class="content">
 
         <!-- Default box -->
-        <div class="card card-solid">
+        <div class="card card-solid" >
             <div class="card-body pb-0">
-                <div class="row d-flex align-items-stretch">
+                <p {% if services|length==0 %}>nothing up to data </p>
+                <div {% else %} class="row d-flex align-items-stretch" {% for s in services%}>
                     <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
                         <div class="card bg-light">
                             <div class="card-header text-muted border-bottom-0">
-                                Categorie :
+                                Categorie : {{ s.categorie.libelle }}
                             </div>
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-7">
-                                        <h2 class="lead"><b>libelle :</b></h2>
-                                        <p class="text-muted text-sm"><b>fournisseur: </b> khalil bnt </p>
+                                        <h2 class="lead"><b>libelle : {{ s.libelle }}</b></h2>
+                                        <a href="" class="text-muted text-sm"><b>fournisseurs </b> </a>
                                         <ul class="ml-4 mb-0 fa-ul text-muted">
                                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> email: </li>
                                             <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> numero #: +21625978570</li>
@@ -40,7 +41,8 @@
                     </div>
 
 
-                </div>
+                </div {% endfor %}>
+                {% endif %}
             </div>
             <!-- /.card-body -->
             <div class="card-footer">

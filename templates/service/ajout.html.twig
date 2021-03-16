@@ -1,3 +1,39 @@
 {% extends 'baseBack.html.twig' %}
 {% block title %}Gestion Service{% endblock %}
 {% block contentHeader %} Ajouter Service {% endblock %}
+{% block contentMain %}
+    {{ form_start(f) }}
+    {{ form_row(f.libelle) }}
+    {{ form_row(f.categorie,{'attr':{'id':"s_categorie" ,'class':"form-control"}}) }}
+    {{ form_row(f.fournisseurs,,{'attr':{'id':"s_fourniseurs" ,'class':"form-control"}}) }}
+    {# ... #}
+    {{ form_end(f) }}
+
+
+{% endblock %}
+{% block js %}
+    <script>
+        var $categorie = $('#s_categorie');
+        
+        $categorie.change(function() {
+            var $form = $(this).closest('form');
+
+            var data = {};
+            data[$categorie.attr('name')] = $categorie.val();
+
+            $.ajax({
+                url : $form.attr('action'),
+                type: $form.attr('method'),
+                data : data,
+                success: function(html) {
+
+                    $('#s_fourniseurs').replaceWith(
+
+                        $(html).find('#s_fourniseurs')
+                    );
+
+                }
+            });
+        });
+    </script>
+{% endblock %}

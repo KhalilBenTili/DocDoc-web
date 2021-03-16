@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origine" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="56628ce6-147a-473e-8c8a-539f7e25ec6a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategorieServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategorieServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/FourniseurServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FourniseurServiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ServiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ServiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/CategorieService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/CategorieService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/FourniseurService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/FourniseurService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CategorieServiceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CategorieServiceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/FournisseurType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FournisseurType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/baseBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseBack.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie_service/ajout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_service/ajout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie_service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_service/details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/categorie_service/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/categorie_service/update.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/affiche.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/ajout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/ajout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fourniseur_service/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fourniseur_service/update.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Service.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Service.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ServiceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ServiceType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/service/affiche.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/affiche.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/service/ajout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service/ajout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +188,8 @@
       <workItem from="1615130699842" duration="1114000" />
       <workItem from="1615135001680" duration="3282000" />
       <workItem from="1615212037560" duration="2302000" />
-      <workItem from="1615381590994" duration="21520000" />
+      <workItem from="1615381590994" duration="23007000" />
+      <workItem from="1615725917880" duration="16096000" />
     </task>
     <servers />
   </component>
@@ -189,6 +198,17 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1614555311670">
@@ -199,10 +219,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="436" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768/1366.0.1280.720@0.0.1366.768" timestamp="1614892101628" />
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615120231636">
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615734482181">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1615120231636" />
+    <state x="413" y="139" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1615734482181" />
     <state x="804" y="150" key="FileChooserDialogImpl" timestamp="1615467925678">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
