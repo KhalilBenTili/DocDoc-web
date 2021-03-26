@@ -3,14 +3,32 @@
 {% block contentHeader %} Services {% endblock %}
 {%  block contentMain  %}
     <section class="content">
-
         <!-- Default box -->
         <div class="card card-solid" >
+            <div class="card-header">
+                <a class="btn bg-gradient-info float-left " href="{{ path('Ajouterservice') }}">
+                    <i class="far fa-plus-square "> ajouter
+                    </i>
+
+                </a>
+
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card-body pb-0">
                 <p {% if services|length==0 %}>nothing up to data </p>
-                <div {% else %} class="row d-flex align-items-stretch" {% for s in services%}>
-                    <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
-                        <div class="card bg-light">
+                <div  class="row d-flex align-items-stretch" >
+                    {% else %}
+                    <div  class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch">
+                        {% for s in services %}
+                        <div class="card bg-light col-12 col-sm-6 col-md-4 d-flex align-items-stretch "  >
                             <div class="card-header text-muted border-bottom-0">
                                 Categorie : {{ s.categorie.libelle }}
                             </div>
@@ -20,8 +38,11 @@
                                         <h2 class="lead"><b>libelle : {{ s.libelle }}</b></h2>
                                         <a href="" class="text-muted text-sm"><b>fournisseurs </b> </a>
                                         <ul class="ml-4 mb-0 fa-ul text-muted">
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> email: </li>
-                                            <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> numero #: +21625978570</li>
+
+                                            <li {% for f in s.fournisseurs %} class="small"><span  class="fa-li"><i class="fas fa-user "></i>
+                                                    {{ f.fourniseur }}
+                                                </span>
+                                            </li {% endfor %}>
                                         </ul>
                                     </div>
                                     <div class="col-5 text-center">
@@ -31,33 +52,21 @@
                             </div>
                             <div class="card-footer">
                                 <div class="text-right">
-
-                                    <a href="#" class="btn btn-sm btn-primary">
+                                    <a href="{{ path('detailservice',{'id':s.id}) }}" class="btn btn-sm btn-primary">
                                         <i class="fas fa-asterisk"></i>details
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </div>z
+                        {% endfor %}
+                    </div >
 
-
-                </div {% endfor %}>
+                </div >
                 {% endif %}
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-                <nav aria-label="Contacts Page Navigation">
-                    <ul class="pagination justify-content-center m-0">
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">6</a></li>
-                        <li class="page-item"><a class="page-link" href="#">7</a></li>
-                        <li class="page-item"><a class="page-link" href="#">8</a></li>
-                    </ul>
-                </nav>
+
             </div>
             <!-- /.card-footer -->
         </div>

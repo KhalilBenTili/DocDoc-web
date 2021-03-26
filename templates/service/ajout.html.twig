@@ -3,37 +3,19 @@
 {% block contentHeader %} Ajouter Service {% endblock %}
 {% block contentMain %}
     {{ form_start(f) }}
-    {{ form_row(f.libelle) }}
-    {{ form_row(f.categorie,{'attr':{'id':"s_categorie" ,'class':"form-control"}}) }}
-    {{ form_row(f.fournisseurs,,{'attr':{'id':"s_fourniseurs" ,'class':"form-control"}}) }}
-    {# ... #}
+    {{ form_label(f.libelle,"libéllé") }}
+    {{ form_widget(f.libelle) }}
+    {{ form_label(f.categorie,'catégorie') }}
+    {{ form_widget(f.categorie) }}
+    <div class="form-group ">
+        {{ form_label(f.prix,"prix",{'attr':{'class':"form-label"}}) }}
+        {{ form_widget(f.prix,{'attr':{'class':"col-sm-2 number"}}) }}
+    </div>
+     {{ form_label(f.description,'Déscription') }}
+    {{ form_widget(f.description) }}
+    {{ form_label(f.disponibilite,"cette service est'il disponible ?") }}
+    {{ form_widget(f.disponibilite) }}
+
+
     {{ form_end(f) }}
-
-
-{% endblock %}
-{% block js %}
-    <script>
-        var $categorie = $('#s_categorie');
-        
-        $categorie.change(function() {
-            var $form = $(this).closest('form');
-
-            var data = {};
-            data[$categorie.attr('name')] = $categorie.val();
-
-            $.ajax({
-                url : $form.attr('action'),
-                type: $form.attr('method'),
-                data : data,
-                success: function(html) {
-
-                    $('#s_fourniseurs').replaceWith(
-
-                        $(html).find('#s_fourniseurs')
-                    );
-
-                }
-            });
-        });
-    </script>
 {% endblock %}

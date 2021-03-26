@@ -47,4 +47,11 @@ class FourniseurServiceRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function fournisseurs_avec_categorie($categorie){
+        return $this->createQueryBuilder('f')
+            ->where('f.categorie==?cat')
+            ->orderBy('f.gouvernorat')
+            ->getQuery()
+            ->getResult();
+    }
 }

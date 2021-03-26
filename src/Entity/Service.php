@@ -24,9 +24,9 @@ class Service
      * @ORM\Column(type="string", length=60)*
      * @Assert\Length(
      *      min = 10,
-     *      max = 30,
-     *      minMessage = "libelle must be at least {{ limit }} characters long",
-     *      maxMessage = "libelle cannot be longer than {{ limit }} characters",
+     *      max = 60,
+     *      minMessage = " llibelle ne peut pas comporter mois de {{limit}} caractéres ",
+     *      maxMessage = "libelle ne peut pas comporter plus de {{limit}} caractères",
      *      allowEmptyString = false
      * )
      */
@@ -38,14 +38,51 @@ class Service
      */
     private $categorie;
 
+
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     * @Assert\PositiveOrZero(
+     *     message="prix doit étre superieur ou égale 0"
+     * )
+     *
+     */
+
+
+    private $prix;
+
+    /**
+     * @ORM\Column(type="string", length=2000)
+     *  @Assert\Length(
+     *      min = 20,
+     *      max = 2000,
+     *      minMessage = " déscription ne peut pas comporter mois de {{limit}} caractéres ",
+     *      maxMessage = "déscription ne peut pas comporter plus de {{limit}} caractères",
+     *      allowEmptyString = false
+     * )
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $disponibilite;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $stars = [];
+
     /**
      * @ORM\OneToMany(targetEntity=FourniseurService::class, mappedBy="service")
      */
-    private $fourniseursservice;
+    private $fournisseurs;
 
     public function __construct()
     {
-        $this->fourniseursservice = new ArrayCollection();
+        $this->fournisseurs = new ArrayCollection();
+        $this->stars= array(0,0,0,0,0);
+
     }
 
     public function getId(): ?int
@@ -77,30 +114,80 @@ class Service
         return $this;
     }
 
+
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(?float $prix): self
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getDisponibilite(): ?bool
+    {
+        return $this->disponibilite;
+    }
+
+    public function setDisponibilite(bool $disponibilite): self
+    {
+        $this->disponibilite = $disponibilite;
+
+        return $this;
+    }
+
+    public function getStars(): ?array
+    {
+        return $this->stars;
+    }
+
+    public function setStars(?array $stars): self
+    {
+        $this->stars = $stars;
+
+        return $this;
+    }
+
     /**
-     * @return Collection|FourniseurService[]
+     * @return Collection|fourniseurservice[]
      */
     public function getFournisseurs(): Collection
     {
-        return $this->fourniseursservice;
+        return $this->fournisseurs;
     }
 
-    public function addFourniseursservice(FourniseurService $fourniseursservice): self
+    public function addFournisseur(fourniseurservice $fournisseur): self
     {
-        if (!$this->fourniseursservice->contains($fourniseursservice)) {
-            $this->fourniseursservice[] = $fourniseursservice;
-            $fourniseursservice->setService($this);
+        if (!$this->fournisseurs->contains($fournisseur)) {
+            $this->fournisseurs[] = $fournisseur;
+            $fournisseur->setService($this);
         }
 
         return $this;
     }
 
-    public function removeFourniseursservice(FourniseurService $fourniseursservice): self
+    public function removeFournisseur(fourniseurservice $fournisseur): self
     {
-        if ($this->fourniseursservice->removeElement($fourniseursservice)) {
+        if ($this->fournisseurs->removeElement($fournisseur)) {
             // set the owning side to null (unless already changed)
-            if ($fourniseursservice->getService() === $this) {
-                $fourniseursservice->setService(null);
+            if ($fournisseur->getService() === $this) {
+                $fournisseur->setService(null);
             }
         }
 

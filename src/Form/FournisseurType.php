@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\CategorieService;
 use App\Entity\FourniseurService;
+use App\Entity\Service;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -57,7 +58,7 @@ class FournisseurType extends AbstractType
                 ],
             ])
             ->add('maplocation')
-            ->add('categorie',EntityType::class,['class'=>CategorieService::class,'choice_label'=>'libelle','choice_value'=>'id'])
+            ->add('service',EntityType::class,['class'=>Service::class,'choice_label'=>'libelle','choice_value'=>'id'])
 
         ;
     }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repository;
+namespace App\Entity ;
 
 use App\Entity\Service;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -46,5 +47,20 @@ class ServiceRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+
     */
+    /**
+     * @param $value
+     * @return Service[]
+     */
+
+    public function findallbycategorie($value){
+        return  $this->createQueryBuilder('s')
+            ->where('s.categorie=:cat')
+            ->setParameter('cat',$value)
+            ->orderBy('s.libelle')
+            ->getQuery()
+            ->getResult();
+}
+
 }

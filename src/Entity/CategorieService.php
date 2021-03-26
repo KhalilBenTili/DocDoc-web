@@ -33,10 +33,10 @@ class CategorieService
     private $libelle;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=1000, nullable=true)
      * @Assert\Length(
      *      min = 20,
-     *      max = 100,
+     *      max = 1000,
      *      minMessage = "the description must be at least {{ limit }} characters long",
      *      maxMessage = "the description cannot be longer than {{ limit }} characters",
      *      allowEmptyString = false
@@ -49,15 +49,11 @@ class CategorieService
      */
     private $services;
 
-    /**
-     * @ORM\OneToMany(targetEntity=FourniseurService::class, mappedBy="categorie")
-     */
-    private $fourniseurServices;
+
 
     public function __construct()
     {
         $this->services = new ArrayCollection();
-        $this->fourniseurServices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -119,33 +115,6 @@ class CategorieService
         return $this;
     }
 
-    /**
-     * @return Collection|FourniseurService[]
-     */
-    public function getFourniseurServices(): Collection
-    {
-        return $this->fourniseurServices;
-    }
 
-    public function addFourniseurService(FourniseurService $fourniseurService): self
-    {
-        if (!$this->fourniseurServices->contains($fourniseurService)) {
-            $this->fourniseurServices[] = $fourniseurService;
-            $fourniseurService->setCategorie($this);
-        }
 
-        return $this;
-    }
-
-    public function removeFourniseurService(FourniseurService $fourniseurService): self
-    {
-        if ($this->fourniseurServices->removeElement($fourniseurService)) {
-            // set the owning side to null (unless already changed)
-            if ($fourniseurService->getCategorie() === $this) {
-                $fourniseurService->setCategorie(null);
-            }
-        }
-
-        return $this;
-    }
 }

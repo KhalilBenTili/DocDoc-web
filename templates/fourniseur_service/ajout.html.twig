@@ -19,17 +19,14 @@
                         <div class="form-group">
                             {{ form_label(f.fourniseur,'Fournisseur ',{'attr':{'for':"nometprenom"}}) }}
                             {{ form_widget(f.fourniseur,{'attr':{'id':"nometprenom" ,'class':"form-control"}}) }}
-                            {{ form_errors(f.fourniseur) }}
                         </div>
                         <div class="form-group">
                             {{ form_label(f.contact,'Email',{'attr':{'for':"contact"}}) }}
                             {{ form_widget(f.contact,{'attr':{'id':"contact" ,'class':"form-control"}}) }}
-                            {{ form_errors(f.contact) }}
                         </div>
                         <div class="form-group">
                             {{ form_label(f.numero,'Numero téléphone',{'attr':{'for':"numero"}}) }}
                             {{ form_widget(f.numero,{'attr':{'id':"numero" ,'class':"form-control"}}) }}
-                            {{ form_errors(f.numero) }}
                         </div>
 
 
@@ -56,11 +53,10 @@
                         <div class="form-group">
                             {{ form_label(f.maplocation,'map Location',{'attr':{'for':"maplocation"}}) }}
                             {{ form_widget(f.maplocation,{'attr':{'id':"maplocation" ,'class':"form-control"}}) }}
-                            {{ form_errors(f.maplocation) }}
                         </div>
                         <div class="form-group">
-                            {{ form_label(f.categorie,'catégorie',{'attr':{'for':"categorie"}}) }}
-                            {{ form_widget(f.categorie,{'attr':{'id':"categorie" ,'class':"form-control"}}) }}
+                            {{ form_label(f.service,'service',{'attr':{'for':"service"}}) }}
+                            {{ form_widget(f.service,{'attr':{'id':"service" ,'class':"form-control"}}) }}
                         </div>
                     </div>
                     <!-- /.card-body -->

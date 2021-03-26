@@ -55,10 +55,10 @@
                         <p class="text-muted">{{ categorie.description }}</p>
                         </div>
                         <div class="col-md-6">
-                        <h4 class="mt-5 ">fourniseurs</h4>
-                        <ul {% for fr in categorie.fourniseurServices %} class="ml-programList--style1" >
+                        <h4 class="mt-5 ">services</h4>
+                        <ul {% for s in categorie.services %} class="ml-programList--style1" >
                             <li>
-                                <span class="btn-link text-secondary"><i class="far fa-user"></i>{{ fr.fourniseur }}</span>
+                                <span class="btn-link text-secondary"><i class="far fa-user"></i>{{ s.libelle }}</span>
                             </li>
 
                         </ul {% endfor %}>

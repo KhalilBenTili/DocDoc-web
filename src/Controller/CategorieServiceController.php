@@ -5,13 +5,13 @@ namespace App\Controller;
 use App\Entity\CategorieService;
 use App\Form\CategorieServiceType;
 use App\Repository\CategorieServiceRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategorieServiceController extends AbstractController
+class CategorieServiceController extends Controller
 {
     /**
      * @Route("/categorie/service", name="categorie_service")
@@ -25,9 +25,16 @@ class CategorieServiceController extends AbstractController
     /**
      * @Route("categorie/service/affiche",name="affichercatservice")
      */
-    public function affiche(){
-        $repo=$this->getDoctrine()->getRepository(CategorieService::class)->findAll();
-        return $this->render('categorie_service/affiche.html.twig',['categories'=>$repo]);
+    public function affiche(Request $request){
+        $categories=$this->getDoctrine()->getRepository(CategorieService::class)->findAll();
+
+        $paginator=$this->get('knp_paginator');
+        $cats =$paginator->paginate(
+            $categories,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limit',3)
+        );
+        return $this->render('categorie_service/affiche.html.twig',['categories'=>$cats]);
     }
     /**
      * @Route("/service/categorie/details/{id}",name="detailscatservice")

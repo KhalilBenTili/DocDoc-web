@@ -29,14 +29,14 @@
                         <tr>
                             <th>ID</th>
                             <th>LIBELLE</th>
-                            <th>DESCRIPTION</th>
+
                         </tr>
                         </thead>
                         <tbody>
                         <tr {% for cat in categories %}>
                             <td>{{  cat.id}}</td>
                             <td>{{ cat.libelle }}</td>
-                            <td>{{ cat.description }}</td>
+
                             <td class="project-actions text-right">
                                 <a class="btn btn-primary btn-sm" href="{{ path('detailscatservice',{'id':cat.id}) }}">
                                     <i class="fas fa-folder">
@@ -57,7 +57,12 @@
                         </tr {% endfor %}>
 
                         </tbody>
-                    </table>
+                    </table>                                                                                                                            Q
+                </div>
+                <div class="card-footer">
+                    <div class="navigation">
+                        {{ knp_pagination_render(categories) }}
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

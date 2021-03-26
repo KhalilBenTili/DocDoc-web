@@ -62,11 +62,6 @@ class FourniseurService
 
 
 
-    /**
-     * @ORM\ManyToOne(targetEntity=CategorieService::class, inversedBy="fourniseurServices")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $categorie;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -74,9 +69,11 @@ class FourniseurService
     private $maplocation;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="fourniseursservice")
+     * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="fournisseurs")
      */
     private $service;
+
+
 
 
     public function getId(): ?int
@@ -144,17 +141,6 @@ class FourniseurService
         return $this;
     }
 
-    public function getCategorie(): ?categorieService
-    {
-        return $this->categorie;
-    }
-
-    public function setCategorie(?categorieService $categorie): self
-    {
-        $this->categorie = $categorie;
-
-        return $this;
-    }
 
     public function getMaplocation(): ?string
     {
@@ -179,6 +165,8 @@ class FourniseurService
 
         return $this;
     }
+
+
 
 
 }
