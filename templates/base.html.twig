@@ -59,7 +59,7 @@
         <li><a href="../dist/blog.html"><span>Blog</span></a></li>
         <li><a href="../dist/blog.html"><span>Forum</span></a></li>
         <li><a  href="../dist/about.html"><span>A propos</span></a></li>
-        <li> <a href="../dist/contact.html"><span>Contacter nous</span></a></li>
+        <li> <a href="{{ path('contact')}}"><span>Contacter nous</span></a></li>
 
     </ul><!--/.ml-resMenu-->
     <!--/. Responsive menu end -->
@@ -87,7 +87,7 @@
                 <div class="ml-logobar ml-headerbar ml-headerbar--block-xs">
                     <div class="ml-logoContainer">
                         <a href="../dist/index.html" class="ml-logoAnchor">
-                            <img src="{{ asset('img-assets/logo24.png') }}" alt="" class="ml-logoImg">
+                            <img src="{{ asset('distClient/img-assets/logo.png') }}" alt="" class="ml-logoImg">
                         </a>
                     </div><!--/.ml-logoContainer-->
                     <div class="ml-headerInfo">
@@ -182,8 +182,8 @@
                         <li class="ml-mainMenu__item"><a href="../dist/shop.html"><span>Medicaments</span></a></li>
                         <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Blog</span></a></li>
                         <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Forum</span></a></li>
-                        <li class="ml-mainMenu__item"><a {#href="{{ path('apropos')}}"#}><span>à propos</span></a></li>
-                        <li class="ml-mainMenu__item"><a  {#href="{{ path('contacternous')}}"#}><span>Contacter nous</span></a></li>
+                        <li class="ml-mainMenu__item"><a href="{{ path('about')}}"><span>à propos</span></a></li>
+                        <li class="ml-mainMenu__item"><a  {#href="{{ path('contact')}}"#}><span>Contacter nous</span></a></li>
                     </ul>
 
                     <div class="ml-searchBar">
@@ -224,10 +224,6 @@
 
     {% block body %}
 
-        <!--  Contact map start -->
-        <div id="contactMap"></div>
-        <!--  Contact end start -->
-
     {% endblock %}
 
 
@@ -237,9 +233,8 @@
                 <div class="col-sm-4 col-md-4">
                     <p class="ml-footerTitle">QUI NOUS SOMMES</p>
                     <ul class="ml-footerList">
-                        <li class="ml-footerList__item"><a href="../dist/about.html"><span>À propos de nous</span></a></li>
-                        <li class="ml-footerList__item"><a href="../dist/about.html"><span>contacter nous</span></a></li>
-                        <li class="ml-footerList__item"><a href="../dist/about.html"><span>historique</span></a></li>
+                        <li class="ml-footerList__item"><a href="{{ path('about')}}"><span>À propos de nous</span></a></li>
+                        <li class="ml-footerList__item"><a {#href="{{ path('contact')}}"#}><span>contacter nous</span></a></li>
                     </ul><!--/.ml-footerList-->
                 </div><!--/.col-sm-3 col-md-3-->
                 <div class="col-sm-4 col-md-4">
@@ -257,7 +252,7 @@
                 <div class="col-sm-4 col-md-4">
                     <p class="ml-footerTitle ml-footerTitle--pb-10">SUIVEZ NOUS</p>
                     <div class="ml-socialIcons ml-socialIcons--pb-30 ml-socialIcons--size17">
-                        <span class="ml-socialIcons__item ml-icon-facebook ml-socialIcons__item--light"></span>
+                        <a href="https://www.facebook.com/Noc-Doc-355035692436604"><span class="ml-socialIcons__item ml-icon-facebook ml-socialIcons__item--light"></span></a>
                         <span class="ml-socialIcons__item ml-icon-instagram ml-socialIcons__item--light"></span>
                     </div><!--/.ml-socialIcons-->
                 </div><!--/.col-sm-3 col-md-3-->
@@ -283,6 +278,7 @@
         });
     }
 </script>
+{% endblock %}
 <script src="{{ asset('distClient/js/plugins/jquery-3.1.1.min.js')}}"></script>
 <script src="{{ asset('distClient/js/plugins/bootstrap.min.js')}}"></script>
 <script src="{{ asset('distClient/js/plugins/jquery.countTo.js')}}"></script>
@@ -300,7 +296,5 @@
         });
     });
 </script>
-
-{% endblock %}
 </body>
 </html>

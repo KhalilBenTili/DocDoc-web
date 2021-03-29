@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Repository;
-namespace App\Entity ;
+
 
 use App\Entity\Service;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -62,5 +62,21 @@ class ServiceRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
 }
+    public function serviceforabout(){
+        return  $this->createQueryBuilder('s')
+            ->orderBy('s.libelle')
+            ->getQuery()
+            ->setMaxResults(6)
+            ->getResult()
+            ;
+    }
+    public function serviceforfooter(){
+        return  $this->createQueryBuilder('s')
+            ->orderBy('s.libelle')
+            ->getQuery()
+            ->setMaxResults(6)
+            ->getResult()
+            ;
+    }
 
 }
