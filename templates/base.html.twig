@@ -19,6 +19,8 @@
     <link href="{{ asset('https://fonts.googleapis.com/css?family=Muli:400,700%7COpen+Sans:400,700')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('distClient/addons/datepicker/css/datepicker.css')}}">
     <link rel="stylesheet" href="{{ asset('distClient/addons/datepicker/css/main.css')}}">
+        <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+        <script src="{{ asset('distClient/js/maps.js')}}"></script>
     {% endblock %}
 </head>
 <style>
@@ -183,7 +185,7 @@
                         <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Blog</span></a></li>
                         <li class="ml-mainMenu__item"><a href="../dist/blog.html"><span>Forum</span></a></li>
                         <li class="ml-mainMenu__item"><a href="{{ path('about')}}"><span>à propos</span></a></li>
-                        <li class="ml-mainMenu__item"><a  {#href="{{ path('contact')}}"#}><span>Contacter nous</span></a></li>
+                        <li class="ml-mainMenu__item"><a  href="{{ path('contact')}}"><span>Contacter nous</span></a></li>
                     </ul>
 
                     <div class="ml-searchBar">
@@ -234,7 +236,7 @@
                     <p class="ml-footerTitle">QUI NOUS SOMMES</p>
                     <ul class="ml-footerList">
                         <li class="ml-footerList__item"><a href="{{ path('about')}}"><span>À propos de nous</span></a></li>
-                        <li class="ml-footerList__item"><a {#href="{{ path('contact')}}"#}><span>contacter nous</span></a></li>
+                        <li class="ml-footerList__item"><a href="{{ path('contact')}}"><span>contacter nous</span></a></li>
                     </ul><!--/.ml-footerList-->
                 </div><!--/.col-sm-3 col-md-3-->
                 <div class="col-sm-4 col-md-4">
@@ -265,20 +267,11 @@
 
 <a href="#" class="totop">TOP</a> <!--/.totop -->
 {% block javascripts %}
-<script src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyAk5BBW5wqa_99xzJRUwd31ZI67eaG0vrI')}}"></script>
-<script>
-    // When the window has finished loading create our google map below
-    google.maps.event.addDomListener(window, 'load', init);
 
-    function init() {
-        var map;
-        map = new google.maps.Map(document.getElementById('contactMap'), {
-            center: {lat: 41.4619536, lng: -72.9029471},
-            zoom: 14
-        });
-    }
-</script>
 {% endblock %}
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
 <script src="{{ asset('distClient/js/plugins/jquery-3.1.1.min.js')}}"></script>
 <script src="{{ asset('distClient/js/plugins/bootstrap.min.js')}}"></script>
 <script src="{{ asset('distClient/js/plugins/jquery.countTo.js')}}"></script>
@@ -288,6 +281,7 @@
 <script src="{{ asset('distClient/addons/datepicker/js/datepicker.js')}}"></script>
 <script src="{{ asset('distClient/addons/datepicker/js/main.js')}}"></script>
 <script src="{{ asset('distClient/js/script.js')}}"></script>
+
 <script>
     $(function() {
         $('[data-toggle={{ asset('datepicker')}}]').datepicker({

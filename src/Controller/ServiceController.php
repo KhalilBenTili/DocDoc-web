@@ -84,14 +84,14 @@ class ServiceController extends AbstractController
      * @Route("admin/service/details/{id}",name="detailservice")
      */
     public function affichedetails($id){
-        $repo=$this->getDoctrine()->getRepository(ServiceRepository::class)->find($id);
+        $repo=$this->getDoctrine()->getRepository(Service::class)->find($id);
         return $this->render('service/details.html.twig',['service'=>$repo]);
     }
     /**
      * @Route("service/details/{id}",name="service")
      */
     public function service($id){
-        $repo=$this->getDoctrine()->getRepository(ServiceRepository::class)->find($id);
+        $repo=$this->getDoctrine()->getRepository(Service::class)->find($id);
         return $this->render('service/service.html.twig',['service'=>$repo]);
     }
 }

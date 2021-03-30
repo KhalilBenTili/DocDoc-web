@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\CategorieService;
 use App\Form\ContactType;
 use App\Repository\ServiceRepository;
+use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,12 +43,13 @@ class GeneralController extends AbstractController
     /**
      * @Route("/contact",name="contact")
      */
-    public function contact(Request $request,\Swift_Mailer $mailer){
+    public function contact(Request $request,\Swift_Mailer $mailer,FlashyNotifier $flash){
         $form=$this->createForm(ContactType::class);
         $form->handleRequest($request);
         if($form->isSubmitted()){
             $contact=$form->getData();
-            $message=(new \Swift_Message('nouveau contact'))
+            dump($contact);
+            $message=(new \Swift_Message('-'))
                 ->setFrom('docdocpidev@gmail.com')
                 ->setTo('khalil.bentili@esprit.tn')
                 ->setBody(
@@ -57,7 +59,8 @@ class GeneralController extends AbstractController
                     'text/html'
                 );
             $mailer->send($message);
-            $this->addFlash('message','le message a bien été envoyé');
+            $flash->success('le message a bien été envoyé');
+
             return $this->redirectToRoute('accueil');
         }
         return $this->render('general/contact.html.twig',['f'=>$form->createView()]);
